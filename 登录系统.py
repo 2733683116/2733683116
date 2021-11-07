@@ -2,9 +2,11 @@ import tkinter as tk
 import tkinter.messagebox
 import pickle
 import Add_a_remove_activation_codes
+from PIL import Image, ImageTK
+import io
+have_code = open('code.text', 'r').read()
 miyao = ''
 npff = Add_a_remove_activation_codes.codda()
-print(npff)
 window = tk.Tk()
 window.title('欢迎进入学习系统，希望你使用愉快')
 window.geometry('450x300')
@@ -12,7 +14,7 @@ tk.Canvas(window, heigh=400, width=300)
 canvas = tk.Canvas(window, height=300, width=500)
 image_file = tk.PhotoImage(file=r'./1.png')
 image = canvas.create_image(0, 0, anchor='nw', image=image_file)
-canvas.pack(side='top')
+
 tk.Label(window, text='用户名:').place(x=100, y=150)
 tk.Label(window, text='密码').place(x=100, y=190)
 var_usr_name = tk.StringVar()
@@ -76,10 +78,8 @@ def usr_up():
         np = new_pwd.get()
         npf = new_pwd_confirm.get()
         npc = new_code.get()
-        print(Add_a_remove_activation_codes.acdincrease())
-        if npc not in Add_a_remove_activation_codes.acdincrease():
+        if npc not in have_code:
             tk.messagebox.showerror('注册失败', '激活码有误，请重新输入')
-            print(npc, npff)
             usr_up()
         else:
             f = 1
