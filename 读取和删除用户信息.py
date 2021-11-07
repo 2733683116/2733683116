@@ -1,6 +1,3 @@
-'''
-配合用户界面一起用
-'''
 import pickle
 with open('./usr_info.pickle', 'rb') as usr_file:
     usr_info = pickle.load(usr_file)
