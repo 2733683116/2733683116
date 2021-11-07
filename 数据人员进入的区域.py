@@ -1,6 +1,10 @@
+#-*- coding : utf-8-*-
+# coding:utf-8
+import pickle
 import tkinter as tk
 import tkinter.messagebox
 import time
+import datetime
 
 
 def acdincrease(code=None):
@@ -17,18 +21,17 @@ def at2():
     window_sign_up2.geometry('350x200')
     window_sign_up2.title('内部人员登录')
     new_pwd = tk.StringVar()
-    tk.Label(window_sign_up2, text='请输入秘钥： ').place(x=10, y=50)
+    tk.Label(window_sign_up2, text='请输入秘钥： ').place(x=60, y=50)
     miyao = tk.StringVar()
     miyaos = tk.Entry(window_sign_up2, textvariable=miyao, show='*')
-    miyaos.place(x=90, y=50)
+    miyaos.place(x=170, y=50)
     bt_confirm_sign_up2 = tk.Button(window_sign_up2, text='确认登录', command=at3, bg='red')
-    bt_confirm_sign_up2.place(x=150, y=160)
+    bt_confirm_sign_up2.place(x=150, y=120)
     window_sign_up2.mainloop()
     time.sleep(30)
     at3()
 def at3():
     global acd
-    acd = []
     miyao = miyaos.get()
     if miyao != npff:
         tk.messagebox.askyesno('认定失败', '请核对好后再等')
@@ -44,6 +47,10 @@ def at3():
         calds = tk.StringVar()
         colds = tk.Entry(windows, textvariable=calds)
         colds.place(x=160, y=150)
+        def acdincrease(code):
+            open('code.text', 'a').write(code+"\n")
+            # data=pd.read_csv(io,encoding='utf-8')
+            have_code = open('code.text', 'r').read()
         def yes():
             code = colds.get()
             acdincrease(code)
@@ -53,8 +60,6 @@ def at3():
         # 退出键
         bt_quit = tk.Button(windows, text='退出', command=quit, bg='grey')
         bt_quit.place(x=280, y=230)
-        print('已有激活码', acdincrease())
         '''
         删除激活码
         '''
-
