@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>内部人员登录</title>
+        <script type="text/javascript">
+            window.onresize=setViewSize;
+            var marginLeft=0;
+            var marginTop=0;
+            function setViewSize(){
+                var w=window.innerWidth
+                    document.documentElement.clientWidth
+                    document.body.clientWidth;
+                var h=window.innerHeight
+                    document.documentElement.clientWidth
+                    document.body.clientHeight;
+                marginLeft = (w-468)/2
+                marginTop = (h-262)/2
+                document.getElementById("loginFormMain").style.marginLeft=marginLeft
+                document.getElementById("loginFormMain").style.marginTop=marginTop
+            }
+            function focusOnUsername(){
+                setViewSize();
+                if (document.loginForm){
+                    var usenameInupt = document.loginForm.username;
+                    if (usenameInupt){
+                        usernameInput.focus();
+                    }
+
+                }
+                return;
+            }
+            function checkLogin(){
+                if (checkUsername() && checkPassword()){
+                    return true
+                }
+                return false
+            }
+            function checkUsername(){
+                var username = document.loginForm.username;
+                if ((username.value.length != 0) && (username == "123456")){
+                    return true
+                }else{
+                    alert("用户名错误，请重新登录");
+                    return false;
+                }
+            }
+            function checkPassword(){
+                var password = document.loginForm.password;
+                if ((password.value.length != 0) && (password == "123456")){
+                    return true
+                }else{
+                    alert("密码错误，请重新登录");
+                    return false;
+                }
+            }
+        </script> 
+    </head>
+    <body onload="javascript:focusOnUsername();">
+        <form action="succeess.html" name="loginForm">
+            <div id="loginFormMain">
+                <table align="center" style="width: 468px; height: 262px; background-color: rgb(135, 148, 79); text-align:center ;">
+                    <tr>
+                        <th colspan="2" align="center">
+                            用户登录
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>用户名： <input type="text" style="width: 200px; height: 30px;"name="username"></td>
+                    </tr>
+                    <tr>
+                        <td>密码： <input type="password" style="width: 200px;height: 30px;"name="password"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <input formmethod="post" type="submit" style="font-style:inherit;" name='submit' onclick="checkLogin()" value="登录">
+                            <input formmethod="post" type="reset" style="font-style:inherit;" name="reset" value="重置"><br/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+
+
+    </body>
+</html>
